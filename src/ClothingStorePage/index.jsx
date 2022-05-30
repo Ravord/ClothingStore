@@ -13,10 +13,13 @@ export default function ClothingStore() {
   let dispatch = useDispatch()
   let navigate = useNavigate()
   useEffect(() => {
+    let successTimeout
     if (isCartCleared) {
       dispatch(clear())
       navigate('/')
+      successTimeout = setTimeout(() => alert('Success!'), 250)
     }
+    return () => clearTimeout(successTimeout)
   }, [])
   return (
     <>
